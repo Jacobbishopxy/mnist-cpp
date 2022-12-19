@@ -180,6 +180,7 @@ std::vector<Data*>* DataHandler::get_validation_data()
   return validation_data;
 }
 
+/*
 int main()
 {
   DataHandler* dh = new DataHandler();
@@ -189,3 +190,4 @@ int main()
   dh->split_data();
   dh->count_classes();
 }
+*/

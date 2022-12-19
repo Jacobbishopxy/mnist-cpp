@@ -10,6 +10,7 @@ class Data
   std::vector<uint8_t>* feature_vector; // No call at end.
   uint8_t label;                        // actual class
   int enum_label;                       // A -> 1, B -> 2
+  double distance;
 
   public:
   Data();
@@ -19,11 +20,13 @@ class Data
   void append_to_feature_vector(uint8_t);
   void set_label(uint8_t);
   void set_enumerated_label(int);
+  void set_distance(double);
 
   std::vector<uint8_t>* get_feature_vector();
   int get_feature_vector_size();
   uint8_t get_label();
   uint8_t get_enumerated_label();
+  double get_distance();
 };
 
 #endif // __DATA_H
