@@ -158,6 +158,7 @@ double KNN::test_performance()
   return current_performance;
 }
 
+/*
 int main()
 {
   DataHandler* dh = new DataHandler();
@@ -196,3 +197,4 @@ int main()
   knearest->set_k(best_k);
   knearest->test_performance();
 }
+*/

@@ -34,6 +34,8 @@ class DataHandler
   void count_classes();
 
   uint32_t convert_to_little_endian(const unsigned char* bytes);
+
+  int get_class_counts();
   std::vector<Data*>* get_training_data();
   std::vector<Data*>* get_test_data();
   std::vector<Data*>* get_validation_data();

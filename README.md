@@ -57,4 +57,4 @@ Note: `dev/` is a temporary directory served for testing purpose.
 
 - [KNN (cn)](https://www.joinquant.com/view/community/detail/a98b7021e7391c62f6369207242700b2)
 
-- [KMEANS (cn)](https://zhuanlan.zhihu.com/p/78798251)
+- [KMEANS (cn)](https://zhuanlan.zhihu.com/p/78798251): unsupervised learning
