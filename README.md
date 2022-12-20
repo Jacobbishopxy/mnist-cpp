@@ -1,8 +1,8 @@
 # MNIST C++
 
-- [source](https://youtu.be/E1K9SZCm0fQ)
+- Learning materials: [video](https://youtu.be/E1K9SZCm0fQ) and [source code](https://github.com/gtaylor5/mnist_ml)
 
-- [data](https://deepai.org/dataset/mnist)
+- [data](https://deepai.org/dataset/mnist): ~~seems like currently unavailable~~
 
   - [intro](./docs/MNIST%20dataset.md)
 
@@ -52,3 +52,9 @@
         - [backup](https://stackoverflow.com/a/68139743/8163324)
 
 Note: `dev/` is a temporary directory served for testing purpose.
+
+## Materials
+
+- [KNN (cn)](https://www.joinquant.com/view/community/detail/a98b7021e7391c62f6369207242700b2)
+
+- [KMEANS (cn)](https://zhuanlan.zhihu.com/p/78798251)
