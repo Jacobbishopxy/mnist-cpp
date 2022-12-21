@@ -2,11 +2,13 @@
 
 - Learning materials: [video](https://youtu.be/E1K9SZCm0fQ) and [source code](https://github.com/gtaylor5/mnist_ml)
 
-- [data](https://deepai.org/dataset/mnist): ~~seems like currently unavailable~~
+- [MNIST data](https://deepai.org/dataset/mnist): ~~seems like currently unavailable~~
 
   - [intro](./docs/MNIST%20dataset.md)
 
   - [raw data](./data/README.md)
+
+- [iris data](https://archive.ics.uci.edu/ml/machine-learning-databases/iris/)
 
 ## Compile and Run
 
@@ -58,3 +60,5 @@ Note: `dev/` is a temporary directory served for testing purpose.
 - [KNN (cn)](https://www.joinquant.com/view/community/detail/a98b7021e7391c62f6369207242700b2)
 
 - [KMEANS (cn)](https://zhuanlan.zhihu.com/p/78798251): unsupervised learning
+
+- [Deep learning]: a subset of machine learning (deep neural networks)

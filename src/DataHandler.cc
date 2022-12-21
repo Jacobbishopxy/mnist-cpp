@@ -12,6 +12,40 @@ DataHandler::~DataHandler()
   // FREE Dynamically Allocated Memory
 }
 
+void DataHandler::read_csv(std::string path, std::string delimiter)
+{
+  num_classes = 0;
+  std::ifstream data_file(path.c_str());
+  std::string line; // holds each line
+  while (std::getline(data_file, line))
+  {
+    if (line.length() == 0)
+      continue; // skip empty line
+    Data* d{new Data()};
+    d->set_double_feature_vector(new std::vector<double>());
+    size_t position{0};
+    std::string token; // value in between delimiter
+    while ((position = line.find(delimiter)) != std::string::npos)
+    {
+      token = line.substr(0, position);
+      d->append_to_feature_vector(std::stod(token));
+      line.erase(0, position + delimiter.length());
+    }
+    if (class_map_str.find(line) != class_map_str.end())
+    {
+      d->set_label(class_map_str[line]);
+    }
+    else
+    {
+      class_map_str[line] = num_classes;
+      d->set_label(class_map_str[line]);
+      num_classes++;
+    }
+    data_array->push_back(d);
+  }
+  feature_vector_size = data_array->at(0)->get_double_feature_vector()->size();
+}
+
 void DataHandler::read_feature_vector(std::string path)
 {
   uint32_t header[4]; // |MAGIC NUM|NUM IMAGES|ROW SIZE|COL SIZE|
