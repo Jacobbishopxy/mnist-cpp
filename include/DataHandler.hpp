@@ -34,6 +34,7 @@ class DataHandler
   void read_feature_labels(std::string path);
   void split_data();
   void count_classes();
+  void normalize();
 
   uint32_t convert_to_little_endian(const unsigned char* bytes);
 
@@ -41,6 +42,8 @@ class DataHandler
   std::vector<Data*>* get_training_data();
   std::vector<Data*>* get_test_data();
   std::vector<Data*>* get_validation_data();
+  std::map<uint8_t, int> get_class_map();
+  std::map<std::string, int> get_class_map_str();
 };
 
 #endif // __DATA_HANDLER_H

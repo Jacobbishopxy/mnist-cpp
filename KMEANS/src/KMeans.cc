@@ -115,6 +115,7 @@ double KMeans::test()
   return 100.0 * (num_correct / (double)test_data->size());
 }
 
+/*
 int main()
 {
   DataHandler* dh{new DataHandler()};
@@ -151,3 +152,4 @@ int main()
   performance = km->test();
   printf("Tested performance %.2f\n", performance);
 }
+*/

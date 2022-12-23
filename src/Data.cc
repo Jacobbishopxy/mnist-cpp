@@ -17,13 +17,13 @@ void Data::append_to_feature_vector(uint8_t val)
 {
   feature_vector->push_back(val);
 }
-void Data::set_double_feature_vector(std::vector<double>* vec)
+void Data::set_normalized_feature_vector(std::vector<double>* vec)
 {
-  double_feature_vector = vec;
+  normalized_feature_vector = vec;
 }
-void Data::append_to_feature_vector(double val)
+void Data::append_to_normalized_feature_vector(double val)
 {
-  double_feature_vector->push_back(val);
+  normalized_feature_vector->push_back(val);
 }
 
 void Data::set_label(uint8_t val)
@@ -54,9 +54,9 @@ std::vector<uint8_t>* Data::get_feature_vector()
 {
   return feature_vector;
 }
-std::vector<double>* Data::get_double_feature_vector()
+std::vector<double>* Data::get_normalized_feature_vector()
 {
-  return double_feature_vector;
+  return normalized_feature_vector;
 }
 std::vector<int>* Data::get_class_vector()
 {
@@ -66,6 +66,10 @@ std::vector<int>* Data::get_class_vector()
 int Data::get_feature_vector_size()
 {
   return feature_vector->size();
+}
+int Data::get_normalized_feature_vector_size()
+{
+  return normalized_feature_vector->size();
 }
 uint8_t Data::get_label()
 {

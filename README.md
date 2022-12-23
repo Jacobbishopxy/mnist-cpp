@@ -10,6 +10,10 @@
 
 - [iris data](https://archive.ics.uci.edu/ml/machine-learning-databases/iris/)
 
+  - [intro](./data/iris.names)
+
+  - [raw data](./data/iris.data)
+
 ## Compile and Run
 
 1. Makefile:
@@ -57,8 +61,8 @@ Note: `dev/` is a temporary directory served for testing purpose.
 
 ## Materials
 
-- [KNN (cn)](https://www.joinquant.com/view/community/detail/a98b7021e7391c62f6369207242700b2)
+- [KNN (cn)](https://www.joinquant.com/view/community/detail/a98b7021e7391c62f6369207242700b2): supervised learning
 
 - [KMEANS (cn)](https://zhuanlan.zhihu.com/p/78798251): unsupervised learning
 
-- [Deep learning]: a subset of machine learning (deep neural networks)
+- [Deep learning (cn)](https://www.jianshu.com/p/c8a46f00b06d): a subset of machine learning (deep neural networks)

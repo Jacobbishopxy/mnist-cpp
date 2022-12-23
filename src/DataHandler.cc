@@ -22,7 +22,7 @@ void DataHandler::read_csv(std::string path, std::string delimiter)
     if (line.length() == 0)
       continue; // skip empty line
     Data* d{new Data()};
-    d->set_double_feature_vector(new std::vector<double>());
+    d->set_normalized_feature_vector(new std::vector<double>());
     size_t position{0};
     std::string token; // value in between delimiter
     while ((position = line.find(delimiter)) != std::string::npos)
@@ -43,7 +43,7 @@ void DataHandler::read_csv(std::string path, std::string delimiter)
     }
     data_array->push_back(d);
   }
-  feature_vector_size = data_array->at(0)->get_double_feature_vector()->size();
+  feature_vector_size = data_array->at(0)->get_normalized_feature_vector()->size();
 }
 
 void DataHandler::read_feature_vector(std::string path)
@@ -193,6 +193,46 @@ void DataHandler::count_classes()
   }
   num_classes = count;
   printf("Successfully extracted %d unique classes.\n", num_classes);
+}
+void DataHandler::normalize() // TODO: check its logic
+{
+  std::vector<double> mins, maxs;
+
+  // file min and max lists
+  Data* d = data_array->at(0);
+  for (auto val : *d->get_feature_vector())
+  {
+    mins.push_back(val);
+    maxs.push_back(val);
+  }
+
+  for (int i = 1; i < data_array->size(); i++)
+  {
+    d = data_array->at(i);
+    for (int j = 0; j < j < d->get_feature_vector_size(); j++)
+    {
+      double value = (double)d->get_class_vector()->at(j);
+      if (value < mins.at(j))
+        mins[j] = value;
+      if (value > maxs.at(j))
+        maxs[j] = value;
+    }
+  }
+
+  // normalize data array
+  for (int i = 0; i < data_array->size(); i++)
+  {
+    data_array->at(i)->set_normalized_feature_vector(new std::vector<double>());
+    data_array->at(i)->set_class_vector(num_classes);
+    for (int j = 0; j < data_array->at(i)->get_feature_vector_size(); j++)
+    {
+      if (maxs[j] - mins[j] == 0)
+        data_array->at(i)->append_to_normalized_feature_vector(0);
+      else
+        data_array->at(i)->append_to_normalized_feature_vector(
+            (double)(data_array->at(i)->get_feature_vector()->at(j) - mins[j]) / (maxs[j] - mins[j]));
+    }
+  }
 }
 
 uint32_t DataHandler::convert_to_little_endian(const unsigned char* bytes)

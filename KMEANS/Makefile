@@ -5,8 +5,8 @@ INCLUDE_DIR := $(PWD)/include/
 
 all : main
 
-main : $(SRC)/kmeans.cc
-	$(CC) $(CFLAGS) $(SRC)/kmeans.cc -o main \
+main : $(SRC)/KMeans.cc
+	$(CC) $(CFLAGS) $(SRC)/KMeans.cc -o main \
 	-L$(MNIST_ML_ROOT)/lib/ -I$(INCLUDE_DIR) -I$(MNIST_ML_ROOT)/include -ldata
 
 clean :
