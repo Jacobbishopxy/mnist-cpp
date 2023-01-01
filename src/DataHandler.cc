@@ -15,8 +15,10 @@ DataHandler::~DataHandler()
 void DataHandler::read_csv(std::string path, std::string delimiter)
 {
   num_classes = 0;
-  std::ifstream data_file(path.c_str());
+  std::ifstream data_file;
+  data_file.open(path.c_str());
   std::string line; // holds each line
+
   while (std::getline(data_file, line))
   {
     if (line.length() == 0)
@@ -31,6 +33,7 @@ void DataHandler::read_csv(std::string path, std::string delimiter)
       d->append_to_feature_vector(std::stod(token));
       line.erase(0, position + delimiter.length());
     }
+
     if (class_map_str.find(line) != class_map_str.end())
     {
       d->set_label(class_map_str[line]);
@@ -43,6 +46,9 @@ void DataHandler::read_csv(std::string path, std::string delimiter)
     }
     data_array->push_back(d);
   }
+  for (Data* data : *data_array)
+    data->set_class_vector(num_classes);
+  // normalize();
   feature_vector_size = data_array->at(0)->get_normalized_feature_vector()->size();
 }
 
@@ -177,7 +183,7 @@ void DataHandler::split_data()
 
   printf("Training data size: %lu.\n", training_data->size());
   printf("Test data size: %lu.\n", test_data->size());
-  printf("Validation  data size: %lu.\n", validation_data->size());
+  printf("Validation data size: %lu.\n", validation_data->size());
 }
 void DataHandler::count_classes()
 {
@@ -194,7 +200,7 @@ void DataHandler::count_classes()
   num_classes = count;
   printf("Successfully extracted %d unique classes.\n", num_classes);
 }
-void DataHandler::normalize() // TODO: check its logic
+void DataHandler::normalize()
 {
   std::vector<double> mins, maxs;
 

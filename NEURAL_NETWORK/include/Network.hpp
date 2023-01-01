@@ -3,29 +3,52 @@
 
 #include "Common.hpp"
 #include "Data.hpp"
-#include "HiddenLayer.hpp"
-#include "InputLayer.hpp"
 #include "Layer.hpp"
 #include "Neuron.hpp"
-#include "OutputLayer.hpp"
 
 class Network : public CommonData
 {
-  private:
-  InputLayer* input_layer;
-  OutputLayer* output_layer;
-  std::vector<HiddenLayer*> hidden_layer;
-  double eta; // learning rate
-
   public:
-  Network(std::vector<int> hidden_layer_spec, int, int);
+  std::vector<Layer*> layers;
+  double learning_rate;
+  double test_performance;
+
+  Network(std::vector<int> spec, int, int, double);
   ~Network();
 
-  void fprop(Data* data);
+  /**
+   * return last layer output
+   */
+  std::vector<double> fprop(Data* data);
+  /**
+   * the weight vector of neuron
+   * the input vector of the previous layer, or the input itself
+   *
+   * dot product of these two
+   */
+  double activate(std::vector<double>, std::vector<double>);
+  /**
+   * put it through an activation function
+   */
+  double transfer(double);
+  /**
+   * take the derivative of the transfer function
+   *
+   * used for back propagation
+   */
+  double transfer_derivative(double);
+
   void bprop(Data* data);
-  void update_weights();
-  void train();
-  void test();
+  void update_weights(Data* data);
+  /**
+   * return the index of the maximum value in the output array
+   */
+  int predict(Data* data);
+  /**
+   * num iterations
+   */
+  void train(int);
+  double test();
   void validate();
 };
 
